@@ -1,19 +1,23 @@
 
 from openpyxl import workbook, load_workbook
-
+import os
 import datetime
+import requests
 
+#current_date = dt.date.today()
+todays_date = str(datetime.datetime.now().strftime("%m.%d.%y"))
 
 wb=load_workbook('daily_overview(FKA 2hr).xlsx')
 
-#current_date = dt.date.today()
-todays_date = str(datetime.datetime.now().strftime("%m-%d-%y"))
+ws=wb.active
 
-wb.copy_worksheet(wb.active)
+target = wb.copy_worksheet(ws)
 
-#wb.title = todays_date
+target.title= todays_date
 
-#print(wb.title)
+#ws= todays_date
+
+print(wb.sheetnames)
 
 wb.save('daily_overview(FKA 2hr).xlsx')
 
